@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 15:43:10 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:43:48 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,14 @@ int		init_stack(t_stack *stack, int num_of_arg);
 void	push_args(t_stack *stack, int *args);
 void	print_instr(int instr);
 int		check_if_sorted(t_stack *stack);
+
+// Instruction
+void	s_instr(t_stkgrp *stacks, int instr);
+void	p_instr(t_stkgrp *stacks, int instr);
+void	r_instr(t_stkgrp *stacks, int instr);
+
+// Instruction helper
+void	ft_swap(int *a, int *b);
 
 // Stack checker (for testing purpose only)
 void	print_stack(t_stkgrp *stacks, int extra_info);
