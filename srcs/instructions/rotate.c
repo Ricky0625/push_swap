@@ -6,32 +6,11 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 12:11:59 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 17:27:28 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 20:00:40 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-/**
- * Push all item from origin stack to destination stack
- * 
- * While the origin stack is not empty (top != -1),
- * i.	Get the topmost item, store it into item
- * ii.	Pop the topmost item
- * iii.	Push the item into the destination stack
-**/
-// MOVE TO INSTR_HELPER
-// static void	push_all(t_stack *org, t_stack *dest)
-// {
-// 	int	item;
-
-// 	while (org->top != -1)
-// 	{
-// 		item = peek(org);
-// 		pop(org);
-// 		push(dest, item);
-// 	}
-// }
 
 /**
  * Rotate or rotate the stack
@@ -73,8 +52,6 @@ static void	rotate_stk(t_stack *stack, int instr)
  * 4. if instr is RRA, rotate_stk(a)
  * 5. if instr is RRB, rotate_stk(b)
  * 6. if instr is RRR, rotate_stk(a) then rotate_stk(b)
- * 
- * For RRx instructions, rotate_stk will determine how many rotation is needed.
  * 
  * After rotate, print the instruction no matter what
 **/

@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:05:32 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 17:24:48 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 19:57:54 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ int	main(int ac, char **av)
 	}
 	stacks.a = &stack_a;
 	stacks.b = &stack_b;
+	print_stack(&stacks, 0);
 	return (0);
 }
