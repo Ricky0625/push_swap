@@ -6,15 +6,20 @@
 #    By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/09 11:23:49 by wricky-t          #+#    #+#              #
-#    Updated: 2022/08/18 11:52:51 by wricky-t         ###   ########.fr        #
+#    Updated: 2022/08/18 14:36:57 by wricky-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= push_swap
 
 SRCS	:= srcs/push_swap.c \
-		   srcs/args_helper.c srcs/args_utils.c \
-		   srcs/stack_operation.c srcs/stack_helper.c \
+		   srcs/args_helper.c \
+		   srcs/args_utils.c \
+		   srcs/stack_operation.c \
+		   srcs/stack_helper.c \
+		#    srcs/instructions/push.c \
+		#    srcs/instructions/rotate.c \
+		#    srcs/instructions/swap.c \
 
 OBJS	:= $(SRCS:.c=.o)
 
