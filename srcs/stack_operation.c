@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:48:39 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 12:16:47 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 14:52:51 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,39 @@
 /**
  * Push item onto stack
  * 
- * 1. Increment top
- * 2. Push new item to the stack
+ * When push new item onto stack, the new item should be at index 0
+ * So, all the previous items should move down 1 step
+ * After that, at index 0, place the new item.
+ * btm++, because got new item infront
 **/
 void	push(t_stack *stack, int item)
 {
-	stack->top++;
-	stack->items[stack->top] = item;
+	stack->btm++;
+	stack->items[stack->btm] = item;
 }
 
 /**
  * Pop item out of stack
  * 
- * 1. Set what's on top to 0
- * 2. Decrement top
+ * When pop the topmost item out of stack, starting from index 1, move all
+ * item up one slot.
+ * clear the item at btm (previous) to 0
+ * then do btm-- (decrement bottom index)
 **/
 void	pop(t_stack *stack)
 {
-	stack->items[stack->top] = 0;
-	stack->top--;
+	int	i;
+	int	*items;
+
+	i = 1;
+	items = stack->items;
+	while (i <= stack->btm)
+	{
+		items[i - 1] = items[i];
+		i++;
+	}
+	items[stack->btm] = 0;
+	stack->btm--;
 }
 
 /**
@@ -44,7 +58,7 @@ void	pop(t_stack *stack)
 **/
 int	is_empty(t_stack *stack)
 {
-	return (stack->top == -1);
+	return (stack->btm == -1);
 }
 
 /**
@@ -55,7 +69,7 @@ int	is_empty(t_stack *stack)
 **/
 int	is_full(t_stack *stack)
 {
-	return (stack->top == stack->capacity - 1);
+	return (stack->btm == stack->capacity - 1);
 }
 
 /**
@@ -65,5 +79,5 @@ int	is_full(t_stack *stack)
 **/
 int	peek(t_stack *stack)
 {
-	return (stack->items[stack->top]);
+	return (stack->items[0]);
 }

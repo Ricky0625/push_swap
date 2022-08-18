@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:15:12 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 12:18:38 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 14:34:36 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
  * Initialize the stack
  *
  * 1. Set capacity as the number of arguments
- * 2. Set top(index of top item) as -1, meaning nothing is in there
+ * 2. Set btm(index of bottom item) as -1, meaning nothing is in there
  * 3. Calloc items with the number of arguments - 1 (exclude program name)
  * 4. Check if malloc successful or not, if not return -1. Else return 1.
  **/
 int	init_stack(t_stack *stack, int num_of_arg)
 {
 	stack->capacity = num_of_arg;
-	stack->top = -1;
+	stack->btm = -1;
 	stack->items = ft_calloc(num_of_arg, sizeof(int));
 	if (stack->items == NULL)
 		return (-1);
@@ -33,9 +33,7 @@ int	init_stack(t_stack *stack, int num_of_arg)
 /**
  * Push argument onto stack
  *
- * Since the first argument need to be on the top of the stack, so push the
- * last arg onto the stack first until when i == 1, meaning not including the
- * program name.
+ * Push each value in the args onto the stack. index 0 is the top.
  **/
 void	push_args(t_stack *stack, int *args)
 {
