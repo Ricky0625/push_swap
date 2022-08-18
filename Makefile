@@ -6,17 +6,17 @@
 #    By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/09 11:23:49 by wricky-t          #+#    #+#              #
-#    Updated: 2022/08/18 17:19:16 by wricky-t         ###   ########.fr        #
+#    Updated: 2022/08/18 17:23:53 by wricky-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= push_swap
 
 SRCS	:= srcs/push_swap.c \
-		   srcs/args_helper.c \
-		   srcs/args_utils.c \
-		   srcs/stack_operation.c \
-		   srcs/stack_helper.c \
+		   srcs/args/args_helper.c \
+		   srcs/args/args_utils.c \
+		   srcs/stack/stack_operation.c \
+		   srcs/stack/stack_helper.c \
 		   srcs/instructions/swap.c \
 		   srcs/instructions/push.c \
 		   srcs/instructions/rotate.c \
