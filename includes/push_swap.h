@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 12:20:29 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 15:43:10 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 typedef struct s_stack
 {
 	int	capacity;
-	int	top;
+	int	btm;
 	int	*items;
 }	t_stack;
 
@@ -83,6 +83,6 @@ void	print_instr(int instr);
 int		check_if_sorted(t_stack *stack);
 
 // Stack checker (for testing purpose only)
-void	print_stack(t_stkgrp *stacks);
+void	print_stack(t_stkgrp *stacks, int extra_info);
 
 #endif
