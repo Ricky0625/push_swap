@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:05:32 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 15:40:24 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:18:09 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,30 @@ void	print_stack(t_stkgrp *stacks, int extra_info)
 	t_stack	*b;
 	int		i;
 	int		j;
-	int		a_cap;
+	int		z;
+	int		cap;
+	int		max_height;
 
 	a = stacks->a;
 	b = stacks->b;
 	i = -1;
 	j = 0;
-	a_cap = a->btm;
+	z = 0;
+	max_height = a->btm;
+	if (b->btm > a->btm)
+		max_height = b->btm;
+	cap = max_height;
 	printf("====== A ======         ====== B ======\n");
-	while (++i <= stacks->a->btm)
+	while (++i <= max_height)
 	{
-		printf("| %11d | %d\t", a->items[i], i);
-		if (a_cap <= b->btm)
+		if (cap <= a->btm)
+		{
+			printf("| %11d | %-3d\t", a->items[z], z);
+			z++;
+		}
+		else
+			printf("|             |         ");
+		if (cap <= b->btm)
 		{
 			printf("| %-11d | %d", b->items[j], j);
 			j++;
@@ -40,7 +52,7 @@ void	print_stack(t_stkgrp *stacks, int extra_info)
 		else
 			printf("|             |");
 		printf("\n");
-		a_cap--;
+		cap--;
 	}
 	printf("=======================================\n");
 	if (extra_info)
@@ -75,6 +87,5 @@ int	main(int ac, char **av)
 	}
 	stacks.a = &stack_a;
 	stacks.b = &stack_b;
-	print_stack(&stacks, 1);
 	return (0);
 }
