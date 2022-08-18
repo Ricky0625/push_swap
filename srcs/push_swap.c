@@ -82,8 +82,8 @@ int	main(int ac, char **av)
 	push_args(&stack_a, args);
 	stacks.a = &stack_a;
 	stacks.b = &stack_b;
-	print_stack(&stacks, 0);
+	// print_stack(&stacks, 0);
 	sort_stack(&stacks, num_of_args);
-	print_stack(&stacks, 0);
+	// print_stack(&stacks, 0);
 	return (0);
 }

@@ -42,10 +42,10 @@ void	sort_three(t_stkgrp *stacks, t_stack *main)
 void	sort_five(t_stkgrp *stacks)
 {
 	t_stack	*a;
-	t_stack	*b;
+	// t_stack	*b;
 
 	a = stacks->a;
-	b = stacks->b;
+	// b = stacks->b;
 	// push 2 item to stack b no matter what
 	push_n_item(stacks, PB,2);
 	// sort the stack a using sort_three since it has three item

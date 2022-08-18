@@ -15,10 +15,10 @@
 void	sort_stack(t_stkgrp *stacks, int num_of_arg)
 {
 	t_stack	*a;
-	t_stack	*b;
+	// t_stack	*b;
 
 	a = stacks->a;
-	b = stacks->b;
+	// b = stacks->b;
 	if (check_if_sorted(a) == 1)
 	{
 		ft_putstr_fd("[ERROR]: Already sorted before sort!\n", 1);
