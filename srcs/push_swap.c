@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:05:32 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 12:19:25 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 15:40:24 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,36 @@
 /**
  * To visualize the stacks, for debugging purpose only.
 **/
-void	print_stack(t_stkgrp *stacks)
+void	print_stack(t_stkgrp *stacks, int extra_info)
 {
 	t_stack	*a;
 	t_stack	*b;
 	int		i;
+	int		j;
+	int		a_cap;
 
 	a = stacks->a;
 	b = stacks->b;
 	i = -1;
-	printf("====== A ======  INDEX ====== B ======\n");
-	while (++i < stacks->a->capacity)
+	j = 0;
+	a_cap = a->btm;
+	printf("====== A ======         ====== B ======\n");
+	while (++i <= stacks->a->btm)
 	{
-		printf("| %11d |  %4d  ", a->items[i], i);
-		if (i <= b->capacity)
-			printf("| %-11d |", b->items[i]);
+		printf("| %11d | %d\t", a->items[i], i);
+		if (a_cap <= b->btm)
+		{
+			printf("| %-11d | %d", b->items[j], j);
+			j++;
+		}
+		else
+			printf("|             |");
 		printf("\n");
+		a_cap--;
 	}
-	printf("======================================\n\n");
+	printf("=======================================\n");
+	if (extra_info)
+		printf("| btm:%7d |         | btm:%7d |\n\n", a->btm, b->btm);
 }
 
 /**
@@ -63,6 +75,6 @@ int	main(int ac, char **av)
 	}
 	stacks.a = &stack_a;
 	stacks.b = &stack_b;
-	print_stack(&stacks);
+	print_stack(&stacks, 1);
 	return (0);
 }
