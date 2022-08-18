@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 12:11:59 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 17:13:42 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:27:28 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@
 
 /**
  * Rotate or rotate the stack
- * 
-
 **/
 static void	rotate_stk(t_stack *stack, int instr)
 {

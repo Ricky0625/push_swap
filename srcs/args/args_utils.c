@@ -6,11 +6,11 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:07:45 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 11:57:52 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:22:43 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 /**
  * Join all the arguments all together
