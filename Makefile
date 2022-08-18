@@ -36,7 +36,7 @@ CFLAGS	?= -Wall -Werror -Wextra #-g3 -fsanitize=address
 
 RM		:= rm -rf
 
-all: $(NAME) libft
+all: $(NAME)
 	@echo "  $(GR)╋╋╋╋$(YL)┏━┳┓┏━┓$(DF)"
 	@echo "  $(YL)┏━┳┳┫━┫┗┫━╋┳┳┳━┓┏━┓$(DF)"
 	@echo "  $(YL)┃╋┃┃┣━┃┃┣━┃┃┃┃╋┗┫╋┃$(DF)"
@@ -55,8 +55,8 @@ $(NAME): $(OBJS) $(INCLUDE)
 libft:
 	@make all -C $(LIB)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@ -L$(LIB) $(LIB)/*.a
+%.o: %.c libft
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@$(RM) $(OBJS)
