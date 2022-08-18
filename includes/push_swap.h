@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/17 19:19:13 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:20:29 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ typedef struct s_stack
 **/
 typedef struct s_stkgrp
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
 }	t_stkgrp;
 
-// Args helpers
-int *check_arguments(int ac, char **av, int *num);
+// Args helper
+int		*check_arguments(int ac, char **av, int *num);
 
 // Args Utils
 char	*join_args(int ac, char **av);
@@ -83,5 +83,6 @@ void	print_instr(int instr);
 int		check_if_sorted(t_stack *stack);
 
 // Stack checker (for testing purpose only)
+void	print_stack(t_stkgrp *stacks);
 
 #endif

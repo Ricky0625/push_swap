@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:48:39 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/17 19:04:25 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:16:47 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,5 @@ int	is_full(t_stack *stack)
 **/
 int	peek(t_stack *stack)
 {
-	int	top;
-
-	top = stack->top;
-	return (stack->items[top]);
+	return (stack->items[stack->top]);
 }

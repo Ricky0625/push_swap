@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 12:47:29 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/17 19:11:01 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:15:16 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
  * 2. The compared target will be i + 1, will be using strncmp to get the
  *    comparison between them. If cmp is 0 means they are identical.
  **/
-static void check_duplicates(int num, char **tab)
+static void	check_duplicates(int num, char **tab)
 {
-	int i;
-	int j;
-	int cmp;
-	size_t size;
+	int		i;
+	int		j;
+	int		cmp;
+	size_t	size;
 
 	i = 0;
 	while (i < num - 1)
@@ -69,11 +69,11 @@ static void check_duplicates(int num, char **tab)
  * 	  because this might be a negative integer value
  * 3. For each character, check if it's a digit ('0' - '9')
  **/
-static void check_is_int(int num, char **tab)
+static void	check_is_int(int num, char **tab)
 {
-	int i;
-	char *str;
-	int is_digit;
+	int		i;
+	char	*str;
+	int		is_digit;
 
 	i = -1;
 	while (++i < num)
@@ -103,11 +103,11 @@ static void check_is_int(int num, char **tab)
  * 4. Else, put the converted arg into array
  * 5. Return arg array at the end
  **/
-static int *get_args(int num, char **tab)
+static int	*get_args(int num, char **tab)
 {
-	int *args;
-	long out;
-	int index;
+	int		*args;
+	long	out;
+	int		index;
 
 	args = ft_calloc(num, sizeof(int));
 	index = -1;
@@ -128,27 +128,31 @@ static int *get_args(int num, char **tab)
 /**
  * Check arguments
  *
- * The process of checking the arguments: (order is crucial)
- * 1. Check if ac is only 1, meaning invalid usage, should exit
- * 2. Check if ac is only 2, meaning one arg only, meaning already sorted
- * 3. Check if there's duplicates
- * 	  The order of this one actually doesn't matter :D
- * 4. Check if there's non-integer arguments
- *    Must before get_args
- * 5. Once the arguments could pass the previous two test, meaning it's ready
- *    to be converted into integer.
- * 6. Check if the arguments are sorted already or not, if the arguments could
- *    pass this test, meaning not sorted, need to sort them
- *
- * When the main function pass through all these checking, meaning it's
- * ok to push those arguments onto stack and begin to sort
+ * The process of checking the arguments:
+ * 1. Join all the arguments all together to accept something like:
+ * 	  " 2 1 5 6" "90 7 45 10"
+ * 2. Split all the arguments using ft_split
+ * 3. Get the number of arguments
+ * 4. Check if there's duplicates
+ * 5. Check if there's non-integer arguments (Must before get_args)
+ * 5. Once the arguments could pass all test, meaning it's ready
+ *    to be converted into integer. (get_args)
+ * 6. Free joined args, only free if ac greater than 2, below that will
+ * 	  not use free().
+ * 7. Free the argument tabs.
+ * 8. Return the arguemnts in the form of int *.
  **/
-int *check_arguments(int ac, char **av, int *num)
+int	*check_arguments(int ac, char **av, int *num)
 {
-	char *joined_args;
-	char **args_tab;
-	int *args;
+	char	*joined_args;
+	char	**args_tab;
+	int		*args;
 
+	if (ac == 1)
+	{
+		ft_putstr_fd("[ERROR]: Invalid Usage!\n", 2);
+		exit(EXIT_FAILURE);
+	}
 	joined_args = join_args(ac, av);
 	args_tab = ft_split(joined_args, ' ');
 	*num = get_num_of_args(args_tab);
@@ -157,7 +161,8 @@ int *check_arguments(int ac, char **av, int *num)
 	if (*num == 1)
 		exit(EXIT_SUCCESS);
 	args = get_args(*num, args_tab);
-	free(joined_args);
+	if (ac > 2)
+		free(joined_args);
 	free_tabs(args_tab);
 	return (args);
 }

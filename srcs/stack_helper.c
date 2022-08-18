@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:15:12 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/17 19:22:13 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:18:38 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,14 @@ void	print_instr(int instr)
 /**
  * Check if a stack is sorted
  * 
- * Ideally, if the stack is sorted, the topmost item will be the smallest; largest
- * at the bottom. So, iterate through from the top, compare the current item with
- * the item below it. If the current item is greater than the next item, meaning
- * it's not sorted, return 0 to the caller. If we manage compare to the last item,
- * meaning it's sorted, return 1 to the caller. Notice that we only compare until
- * i greater than 0, meaning until index 1. This is to avoid the function to
- * overlook.
+ * Ideally, if the stack is sorted, the topmost item will be the smallest;
+ * largest at the bottom. So, iterate through from the top, compare the
+ * current item with the item below it. If the current item is greater than
+ * the next item, meaning it's not sorted, return 0 to the caller. If we
+ * manage compare to the last item, meaning it's sorted, return 1 to the caller.
+ * 
+ * Notice that we only compare until i less than stack->capacity - 1, meaning
+ * until the max index. This is to avoid the function to overlook.
 **/
 int	check_if_sorted(t_stack *stack)
 {
@@ -99,9 +100,8 @@ int	check_if_sorted(t_stack *stack)
 	items = stack->items;
 	while (++i < stack->capacity - 1)
 	{
-		if (items[i] > items[i - 1])
+		if (items[i] > items[i + 1])
 			return (0);
-		i++;
 	}
 	return (1);
 }
