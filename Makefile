@@ -22,7 +22,8 @@ SRCS	:= srcs/push_swap.c \
 		   srcs/instructions/rotate.c \
 		   srcs/instructions/instr_helper.c \
 		   srcs/sorter/sort_stack.c \
-		   srcs/sorter/sort_small.c
+		   srcs/sorter/sort_small.c \
+			 srcs/sorter/sort_utils.c
 
 OBJS	:= $(SRCS:.c=.o)
 

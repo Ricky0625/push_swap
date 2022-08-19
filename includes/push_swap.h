@@ -96,6 +96,9 @@ void	push_n_item(t_stkgrp *stacks, int instr, int n);
 void	sort_stack(t_stkgrp *stacks, int num_of_arg);
 void	sort_three(t_stkgrp *stacks, t_stack *main);
 
+// Sorter utils
+int	binary_search(t_stack *stack, int target, int low, int high);
+
 // Stack checker (for testing purpose only)
 void	print_stack(t_stkgrp *stacks, int extra_info);
 
