@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 12:11:59 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 20:00:40 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:20:23 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 /**
  * Rotate or rotate the stack
-**/
-static void	rotate_stk(t_stack *stack, int instr)
+ **/
+void rotate_stk(t_stack *stack, int instr)
 {
-	int	start;
-	int	iter;
+	int start;
+	int iter;
 
 	iter = stack->btm;
 	start = 0;
@@ -31,7 +31,7 @@ static void	rotate_stk(t_stack *stack, int instr)
 			start--;
 		}
 	}
-	else
+	else if (instr == RA || instr == RB || instr == RR)
 	{
 		while (start < iter)
 		{
@@ -39,11 +39,12 @@ static void	rotate_stk(t_stack *stack, int instr)
 			start++;
 		}
 	}
+	print_instr(instr);
 }
 
 /**
  * Execute instruction RA, RB, RR
- * 
+ *
  * a	: stack a
  * b	: stack b
  * 1. if instr is RA, rotate_stk(a)
@@ -52,13 +53,13 @@ static void	rotate_stk(t_stack *stack, int instr)
  * 4. if instr is RRA, rotate_stk(a)
  * 5. if instr is RRB, rotate_stk(b)
  * 6. if instr is RRR, rotate_stk(a) then rotate_stk(b)
- * 
+ *
  * After rotate, print the instruction no matter what
-**/
-void	r_instr(t_stkgrp *stacks, int instr)
+ **/
+void r_instr(t_stkgrp *stacks, int instr)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack *a;
+	t_stack *b;
 
 	a = stacks->a;
 	b = stacks->b;
@@ -80,5 +81,6 @@ void	r_instr(t_stkgrp *stacks, int instr)
 		rotate_stk(a, RRA);
 		rotate_stk(b, RRB);
 	}
-	print_instr(instr);
+	// print_instr(instr);
+	// print_stack(stacks, 0);
 }
