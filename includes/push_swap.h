@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 21:15:30 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:11:54 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int		check_if_sorted(t_stack *stack);
 void	s_instr(t_stkgrp *stacks, int instr);
 void	p_instr(t_stkgrp *stacks, int instr);
 void	r_instr(t_stkgrp *stacks, int instr);
+void	rotate_stk(t_stack *stack, int instr);
 
 // Instruction helper
 void	ft_swap(int *a, int *b);
@@ -95,9 +96,14 @@ void	push_n_item(t_stkgrp *stacks, int instr, int n);
 // Sorter
 void	sort_stack(t_stkgrp *stacks, int num_of_arg);
 void	sort_three(t_stkgrp *stacks, t_stack *main);
+void	sort_five(t_stkgrp *stacks);
 
 // Sorter utils
-int	binary_search(t_stack *stack, int target, int low, int high);
+int		binary_search(t_stack *dest, int target, int top, int btm);
+int		*detect_runs(t_stack *target);
+int		find_smallest(t_stack *stack);
+void	give_way(t_stack *org, t_stack *dest, int location);
+void	restorer(t_stack *stack);
 
 // Stack checker (for testing purpose only)
 void	print_stack(t_stkgrp *stacks, int extra_info);
