@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 12:11:59 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/19 18:20:23 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:56:31 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,5 @@ void r_instr(t_stkgrp *stacks, int instr)
 		rotate_stk(a, RRA);
 		rotate_stk(b, RRB);
 	}
-	// print_instr(instr);
 	// print_stack(stacks, 0);
 }

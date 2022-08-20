@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:14:06 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/19 18:20:23 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:53:08 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * 3. Pop the origin topmost item
  * 4. Push the item to destination stack
  **/
-static void push_top(t_stack *org, t_stack *dest)
+void push_top(t_stack *org, t_stack *dest, int instr)
 {
 	int i;
 	int item;
@@ -40,6 +40,7 @@ static void push_top(t_stack *org, t_stack *dest)
 			i--;
 		}
 	}
+	print_instr(instr);
 }
 
 /**
@@ -61,9 +62,7 @@ void p_instr(t_stkgrp *stacks, int instr)
 	a = stacks->a;
 	b = stacks->b;
 	if (instr == PA)
-		push_top(b, a);
+		push_top(b, a, PA);
 	else if (instr == PB)
-		push_top(a, b);
-	print_instr(instr);
-	// print_stack(stacks, 0);
+		push_top(a, b, PB);
 }

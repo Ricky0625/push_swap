@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:18:31 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/19 18:20:23 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:56:31 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * 1. Check if it's empty or only one item (btm == 0)
  * 2. Swap top two item
  **/
-static void swap_top(t_stack *stack)
+void swap_top(t_stack *stack, int instr)
 {
 	int btm;
 
@@ -27,6 +27,7 @@ static void swap_top(t_stack *stack)
 	if (is_empty(stack) == 1 || btm == 0)
 		return;
 	ft_swap(&stack->items[0], &stack->items[1]);
+	print_instr(instr);
 }
 
 /**
@@ -48,14 +49,13 @@ void s_instr(t_stkgrp *stacks, int instr)
 	a = stacks->a;
 	b = stacks->b;
 	if (instr == SA)
-		swap_top(a);
+		swap_top(a, instr);
 	else if (instr == SB)
-		swap_top(b);
+		swap_top(b, instr);
 	else if (instr == SS)
 	{
-		swap_top(a);
-		swap_top(b);
+		swap_top(a, instr);
+		swap_top(b, instr);
 	}
-	print_instr(instr);
 	// print_stack(stacks, 0);
 }
