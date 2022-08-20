@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:20:03 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/19 17:59:18 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/20 17:56:50 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,15 +140,13 @@ int	find_smallest(t_stack *stack)
  * 4. When dist_to_top == dist_top_btm, no matter what direction, will be the
  *    same, so either one. For this function, I choose to do RA.
 **/
-// need to remove org since no use
-void	give_way(t_stack *org, t_stack *dest, int location)
+void	give_way(t_stack *dest, int location)
 {
 	int	dest_btm;
 	int	dist_to_top;
 	int	dist_to_btm;
 
 	dest_btm = dest->btm;
-	(void)org;
 	if (location > dest_btm || location == 0)
 		return ;
 	if (location == dest_btm)
