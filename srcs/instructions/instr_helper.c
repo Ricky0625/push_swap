@@ -6,63 +6,99 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 15:53:40 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 20:59:43 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/23 21:05:05 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * Ermmm... Just to swap two value?
-**/
-void	ft_swap(int *a, int *b)
+ * Execute instruction SA, SB & SS
+ *
+ * a	: stack a
+ * b	: stack b
+ * 1. if instr is SA, swap_top(a)
+ * 2. if instr is SB, swap_top(b)
+ * 3. if instr is SS, swap_top(a) then swap_top(b)
+ *
+ * After swap, print the instruction, even if the top two not swapped
+ **/
+void	s_instr(t_stkgrp *stacks, int instr)
 {
-	int	temp;
+	t_stack	*a;
+	t_stack	*b;
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
+	a = stacks->a;
+	b = stacks->b;
+	if (instr == SA)
+		swap_top(a, instr);
+	else if (instr == SB)
+		swap_top(b, instr);
+	else if (instr == SS)
+	{
+		swap_top(a, instr);
+		swap_top(b, instr);
+	}
 }
 
 /**
- * Push all item from a stack to another based on the instruction
- * 
- * stack: the origin stack
- * while the origin stack is not empty push the top item to the another stack
-**/
-void	push_all(t_stkgrp *stacks, int instr)
+ * Execute instruction PA & PB
+ *
+ * a    : stack a
+ * b    : stack b
+ *
+ * PA, origin is stack b, destination is stack a
+ * PB, origin is stack a, destination is stack b
+ *
+ * After push, print instruction no matter it's sucessful or not
+ **/
+void	p_instr(t_stkgrp *stacks, int instr)
 {
-	t_stack	*stack;
+	t_stack	*a;
+	t_stack	*b;
 
+	a = stacks->a;
+	b = stacks->b;
 	if (instr == PA)
-		stack = stacks->b;
+		push_top(b, a, PA);
 	else if (instr == PB)
-		stack = stacks->a;
-	else
-		return ;
-	while (is_empty(stack) != 1)
-		p_instr(stacks, instr);
+		push_top(a, b, PB);
 }
 
 /**
- * Push n item from a stack to another based on the instruction
+ * Execute instruction RRx, Rx
+ *
+ * stack: the target stack
  * 
- * stack	: the origin stack
- * new_btm	: the new bottom index
- * while the origin stack is not empty and the bottom index of stack
- * is not the new bottom index, keep pushing
-**/
-void	push_n_item(t_stkgrp *stacks, int instr, int n)
+ * 1. If it's RR, call the r_instr with RA and RB but don't print instr.
+ * 2. IF it's RRR, call the r_instr with RRA and RRB but don't print instr.
+ * 3. Assign stack (If not RR nor RRR)
+ * 	  - If it's RA or RRA, target stack set to stack A.
+ *    - If it's RB or RRB, target stack set to stack B.
+ * 4. If the stack is not NULL, meaning RA, RRA, RB or RRB, do rotate/reverse.
+ * 5. If print is 1, meaning need to print the executed instr.
+ **/
+void	r_instr(t_stkgrp *stacks, int instr, int print)
 {
 	t_stack	*stack;
-	int		new_btm;
 
 	stack = NULL;
-	if (instr == PA)
-		stack = stacks->b;
-	else if (instr == PB)
+	if (instr == RR)
+	{
+		r_instr(stacks, RA, 0);
+		r_instr(stacks, RB, 0);
+	}
+	else if (instr == RRR)
+	{
+		r_instr(stacks, RRA, 0);
+		r_instr(stacks, RRB, 0);
+	}
+	else if (instr == RA || instr == RRA)
 		stack = stacks->a;
-	new_btm = stack->btm - n;
-	while (is_empty(stack) != 1 && stack->btm != new_btm)
-		p_instr(stacks, instr);
+	else if (instr == RB || instr == RRB)
+		stack = stacks->b;
+	if (stack != NULL)
+		rotate_stk(stack, instr);
+	if (print == 1)
+		print_instr(instr);
 }
