@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 20:43:21 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/23 20:59:42 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/23 21:15:35 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	push_n_item(t_stkgrp *stacks, int instr, int n)
  * Start from the first item of the array. swap it with the one below it.
  * Keep doing this until the last itme is at the bottom.
  **/
-void	rotate_stk(t_stack *stack, int instr)
+void	rotate_stk(t_stack *stack, int instr, int print)
 {
 	int	start;
 	int	iter;
@@ -131,4 +131,6 @@ void	rotate_stk(t_stack *stack, int instr)
 			start++;
 		}
 	}
+	if (print == 1)
+		print_instr(instr);
 }

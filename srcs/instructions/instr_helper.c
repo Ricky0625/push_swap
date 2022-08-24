@@ -6,11 +6,40 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 15:53:40 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/23 21:05:05 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/24 10:40:53 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+/**
+ * Print instruction according to the instruction given
+ **/
+void	print_instr(int instr)
+{
+	if (instr == SA)
+		ft_putstr_fd("sa\n", 1);
+	else if (instr == SB)
+		ft_putstr_fd("sb\n", 1);
+	else if (instr == SS)
+		ft_putstr_fd("ss\n", 1);
+	else if (instr == PA)
+		ft_putstr_fd("pa\n", 1);
+	else if (instr == PB)
+		ft_putstr_fd("pb\n", 1);
+	else if (instr == RA)
+		ft_putstr_fd("ra\n", 1);
+	else if (instr == RB)
+		ft_putstr_fd("rb\n", 1);
+	else if (instr == RR)
+		ft_putstr_fd("rr\n", 1);
+	else if (instr == RRA)
+		ft_putstr_fd("rra\n", 1);
+	else if (instr == RRB)
+		ft_putstr_fd("rrb\n", 1);
+	else if (instr == RRR)
+		ft_putstr_fd("rrr\n", 1);
+}
 
 /**
  * Execute instruction SA, SB & SS
@@ -98,7 +127,7 @@ void	r_instr(t_stkgrp *stacks, int instr, int print)
 	else if (instr == RB || instr == RRB)
 		stack = stacks->b;
 	if (stack != NULL)
-		rotate_stk(stack, instr);
+		rotate_stk(stack, instr, 0);
 	if (print == 1)
 		print_instr(instr);
 }

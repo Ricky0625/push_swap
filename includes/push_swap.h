@@ -6,15 +6,13 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/20 17:36:40 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/24 10:43:26 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdlib.h>
-# include <unistd.h>
 # include <stdio.h>
 # include "../libft/libft.h"
 
@@ -61,10 +59,8 @@ typedef struct s_stkgrp
 	t_stack	*b;
 }	t_stkgrp;
 
-// Args helper
+// Args helper & Utils
 int		*check_arguments(int ac, char **av, int *num);
-
-// Args Utils
 char	*join_args(int ac, char **av);
 int		get_num_of_args(char **args);
 void	free_tabs(char **args);
@@ -76,39 +72,36 @@ int		is_empty(t_stack *stack);
 int		is_full(t_stack *stack);
 int		peek(t_stack *stack);
 
-// Stack helper
-int		init_stack(t_stack *stack, int num_of_arg);
-void	push_args(t_stack *stack, int *args);
-void	print_instr(int instr);
-int		check_if_sorted(t_stack *stack);
-
 // Instruction
 void	s_instr(t_stkgrp *stacks, int instr);
-void	swap_top(t_stack *stack, int instr);
 void	p_instr(t_stkgrp *stacks, int instr);
-void	push_top(t_stack *org, t_stack *dest, int instr);
-void	r_instr(t_stkgrp *stacks, int instr);
-void	rotate_stk(t_stack *stack, int instr);
-
-// Instruction helper
+void	r_instr(t_stkgrp *stacks, int instr, int print);
 void	ft_swap(int *a, int *b);
-void	push_all(t_stkgrp *stacks, int instr);
+void	swap_top(t_stack *stack, int instr);
+void	push_top(t_stack *org, t_stack *dest, int instr);
 void	push_n_item(t_stkgrp *stacks, int instr, int n);
+void	rotate_stk(t_stack *stack, int instr, int print);
+void	print_instr(int instr);
 
 // Sorter
 void	sort_stack(t_stkgrp *stacks, int num_of_arg);
 void	sort_three(t_stkgrp *stacks, t_stack *main);
 void	sort_small_stack(t_stkgrp *stacks, int num_of_arg);
+void    sort_hundred(t_stkgrp *stacks, int num_of_arg);
+int		check_if_sorted(t_stack *stack);
 
 // Sorter utils
 int		binary_search(t_stack *dest, int target, int top, int btm);
-int		*detect_runs(t_stack *target);
 int		find_smallest(t_stack *stack);
-void	give_way(t_stack *dest, int location);
+int		find_largest(t_stack *stack);
+void	give_way(t_stack *dest, int location, char stk);
 void	restorer(t_stack *stack);
 
 // Sorting algo
 void	insertion_sort(t_stack *org, t_stack *dest);
+int		get_median(int *items, int size);
+void	quick_sort(t_stkgrp *stacks, int size);
+void	bubble_sort(int *copy, int size);
 
 // Stack checker (for testing purpose only)
 void	print_stack(t_stkgrp *stacks, int extra_info);
