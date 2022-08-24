@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/24 10:43:26 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/24 12:11:06 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
  * Implement using Dynamic Array
  * 
  * capacity : the max capacity of the stack
- * top      : the index of the top item
+ * btm      : the index of the bottom item
  * item     : dynamic array
 **/
 typedef struct s_stack
@@ -91,16 +91,13 @@ void    sort_hundred(t_stkgrp *stacks, int num_of_arg);
 int		check_if_sorted(t_stack *stack);
 
 // Sorter utils
-int		binary_search(t_stack *dest, int target, int top, int btm);
 int		find_smallest(t_stack *stack);
 int		find_largest(t_stack *stack);
-void	give_way(t_stack *dest, int location, char stk);
+void	give_way(t_stkgrp *stacks, int location, char stk);
 void	restorer(t_stack *stack);
 
 // Sorting algo
-void	insertion_sort(t_stack *org, t_stack *dest);
-int		get_median(int *items, int size);
-void	quick_sort(t_stkgrp *stacks, int size);
+void	insertion_sort(t_stkgrp *stacks, char stk);
 void	bubble_sort(int *copy, int size);
 
 // Stack checker (for testing purpose only)
