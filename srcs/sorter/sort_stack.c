@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 20:05:17 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/26 12:28:19 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:37:44 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,7 @@ void	sort_stack(t_stkgrp *stacks, int num_of_arg)
 	else if (num_of_arg <= 10)
 		sort_small_stack(stacks, num_of_arg);
 	else if (num_of_arg <= 100)
-		quick_sort(stacks, num_of_arg, num_of_arg / 2);
+		quick_sort(stacks, num_of_arg, 2);
+	else if (num_of_arg <= 500)
+		quick_sort(stacks, num_of_arg, 4);
 }
