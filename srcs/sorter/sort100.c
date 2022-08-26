@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:36:01 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/26 12:34:52 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/26 12:36:48 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	quick_sort(t_stkgrp *stacks, int num_of_arg, int chunk)
 
 	a = stacks->a;
 	b = stacks->b;
-    push_chunk(stacks, num_of_arg, chunk);
+	push_chunk(stacks, num_of_arg, chunk);
 	if (check_if_sorted(a) == 0)
 		sort_stack(stacks, a->btm + 1);
 	while (is_empty(b) != 1)
