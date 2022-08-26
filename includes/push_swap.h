@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/26 12:28:12 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:37:34 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	print_instr(int instr);
 void	sort_stack(t_stkgrp *stacks, int num_of_arg);
 void	sort_three(t_stkgrp *stacks, t_stack *main);
 void	sort_small_stack(t_stkgrp *stacks, int num_of_arg);
-void    quick_sort(t_stkgrp *stacks, int num_of_arg, int chunk);
+void    quick_sort(t_stkgrp *stacks, int num_of_arg, int cutsize);
 int		check_if_sorted(t_stack *stack);
 
 // Sorter utils
@@ -95,7 +95,6 @@ int		find_smallest(t_stack *stack);
 int		find_largest(t_stack *stack);
 void	give_way(t_stkgrp *stacks, int location, char stk);
 void	restorer(t_stkgrp *stacks, char stk);
-// int		*copy_items(int *items, int num_of_arg);
 
 // Sorting algo
 void	insertion_sort(t_stkgrp *stacks, char stk);
@@ -103,6 +102,7 @@ int		*bubble_sort(int *items, int size);
 
 // Stack checker (for testing purpose only)
 void	print_stack(t_stkgrp *stacks, int extra_info);
-void    test_sort(t_stkgrp *stacks, int num_of_arg, int chunk);
+void	push_quarter(t_stkgrp *stacks, int num_of_arg, int chunk);
+void	quick_sort2(t_stkgrp *stacks, int num_of_arg, int chunk);
 
 #endif
