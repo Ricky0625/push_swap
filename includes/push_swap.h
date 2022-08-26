@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/24 12:11:06 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/26 11:27:42 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,15 @@ int		check_if_sorted(t_stack *stack);
 int		find_smallest(t_stack *stack);
 int		find_largest(t_stack *stack);
 void	give_way(t_stkgrp *stacks, int location, char stk);
-void	restorer(t_stack *stack);
+void	restorer(t_stkgrp *stacks, char stk);
+// int		*copy_items(int *items, int num_of_arg);
 
 // Sorting algo
 void	insertion_sort(t_stkgrp *stacks, char stk);
-void	bubble_sort(int *copy, int size);
+int		*bubble_sort(int *items, int size);
 
 // Stack checker (for testing purpose only)
 void	print_stack(t_stkgrp *stacks, int extra_info);
+void    test_sort(t_stkgrp *stacks, int num_of_arg, int chunk);
 
 #endif
