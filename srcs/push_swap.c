@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:05:32 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/26 17:44:50 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:45:59 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ int	main(int ac, char **av)
 	stacks.a = &stack_a;
 	stacks.b = &stack_b;
 	sort_stack(&stacks, num_of_args);
+	free(args);
+	free(stack_a.items);
+	free(stack_b.items);
 	return (0);
 }
 

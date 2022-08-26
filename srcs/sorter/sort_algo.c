@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:04:19 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/26 11:27:26 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:12:44 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,6 @@ int	*bubble_sort(int *items, int size)
 			if (copy[j] > copy[j + 1])
 				ft_swap(&copy[j], &copy[j + 1]);
 	}
+	free(copy);
 	return (copy);
 }

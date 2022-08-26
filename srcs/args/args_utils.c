@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:07:45 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/18 17:22:43 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:44:30 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,5 @@ void	free_tabs(char **args)
 	i = -1;
 	while (args[++i] != NULL)
 		free(args[i]);
+	free(args);
 }
