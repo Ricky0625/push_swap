@@ -6,7 +6,7 @@
 #    By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/09 11:23:49 by wricky-t          #+#    #+#              #
-#    Updated: 2022/08/26 12:06:44 by wricky-t         ###   ########.fr        #
+#    Updated: 2022/08/26 12:34:08 by wricky-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS	:= srcs/push_swap.c \
 		   srcs/instructions/instr_utils.c \
 		   srcs/sorter/sort_stack.c \
 		   srcs/sorter/sort_utils.c \
-		   srcs/sorter/sort_hundred.c \
+		   srcs/sorter/sort100.c \
 		   srcs/sorter/sort_algo.c
 
 OBJS	:= $(SRCS:.c=.o)

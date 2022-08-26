@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:36:01 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/26 12:32:35 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/26 12:34:52 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ void	push_chunk(t_stkgrp *stacks, int num_of_arg, int chunk)
 	b = stacks->b;
 	if (a->btm + 1 <= 3 || check_if_sorted(a) == 1)
 		return ;
-	// copy = copy_items(a->items, num_of_arg);
-	bubble_sort(copy, num_of_arg);
+	copy = bubble_sort(a->items, num_of_arg);
 	median = num_of_arg / 2;
 	while (b->btm + 1 < chunk)
 	{
@@ -73,7 +72,7 @@ void	push_chunk(t_stkgrp *stacks, int num_of_arg, int chunk)
  *     ii.	Move largest item to the top using smart rotate
  *     iii.	Push the largest item to the stack a
 **/
-void	test_sort(t_stkgrp *stacks, int num_of_arg, int chunk)
+void	quick_sort(t_stkgrp *stacks, int num_of_arg, int chunk)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -81,6 +80,7 @@ void	test_sort(t_stkgrp *stacks, int num_of_arg, int chunk)
 
 	a = stacks->a;
 	b = stacks->b;
+    push_chunk(stacks, num_of_arg, chunk);
 	if (check_if_sorted(a) == 0)
 		sort_stack(stacks, a->btm + 1);
 	while (is_empty(b) != 1)
