@@ -6,97 +6,37 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:20:03 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/20 17:56:50 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/24 16:04:01 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * Binary search
+ * Find the smallest item in the stack and return it's position (index)
  * 
- * Time complexity
- * Best     : O(1)
- * Average  : O(log n)
- * Worst    : O(log n)
- * Notes: `log` here refers to `log in base 2`
+ * Assume the smallest item is on the top. Iterate through the items,
+ * if there is an item that is smaller than the smallest (what we assume),
+ * update smallest to the item's index.
  * 
- * Works only when the list is in sorted order.
- * For example, names in a phone book are sorted in alphabetical order.
- * ========================================================================
- * binary_search function takes a sorted array, an item (target), and the
- * minimum(top) and maximum(btm) index to look at.
- * mid  : the midpoint between top and btm index
- * items: the items array
- * If the btm is <= top, like so: "top: 0, btm: 0" check if the target is
- * greater than the item, if yes, return top + 1, else return top.
- * If btm is >= top, like so: "top: 0, btm: 5", get midpoint.
- * If target is equal to the item at midpoint (actually will not happen),
- * return mid + 1 (for the sake of algo stability)
- * If the target is greater than the item at mid, do binary_search, but
- * this time, start searching from mid +1 to the btm.
- * Else, do binary_search from top to mid -1. (meaning target is smaller
- * than the item at midpoint)
+ * Return smallest, which is the index of smallest item at the end.
 **/
-int	binary_search(t_stack *dest, int target, int top, int btm)
+int	find_largest(t_stack *stack)
 {
-	int	mid;
 	int	*items;
-
-	items = dest->items;
-	if (btm <= top)
-	{
-		if (target > items[top])
-			return (top + 1);
-		return (top);
-	}
-	mid = (top + btm) / 2;
-	if (target == items[mid])
-		return (mid + 1);
-	if (target > items[mid])
-		return (binary_search(dest, target, mid + 1, btm));
-	return (binary_search(dest, target, top, mid - 1));
-}
-
-/**
- * Detect natural runs in a stack
- * 
- * Natural runs: Already-ordered elements like 1,2,4,6,8,9 or in descending
- * For this function, we only detect natural runs in descending order
- * The function will return an array of two index value if there is a run.
- * nruns = {start, end};
- * 
- * Will assume the start of a natural run start from index 0, so nruns[0] = 0.
- * Iterate through the items, as long as it's less than the target's btm
- * If item at index is less than item at index + 1, meaning it's an ascending
- * order run, break the loop.
- * Check if the index is greater than 0, if yes, set natural run ending at index.
- * Else return NULL, meaning to natural run.
-**/
-int	*detect_runs(t_stack *target)
-{
 	int	index;
-	int	*items;
-	int	*nruns;
+	int	largest;
 
-	index = 0;
-	items = target->items;
-	nruns = malloc(sizeof(int) * 2);
-	nruns[0] = 0;
-	while (index < target->btm)
+	items = stack->items;
+	index = 1;
+	largest = 0;
+	while (index <= stack->btm)
 	{
-		if (items[index] < items[index + 1])
-			break ;
+		if (items[index] > items[largest])
+			largest = index;
 		index++;
 	}
-	if (index > 0)
-		nruns[1] = index;
-	else
-	{
-		free(nruns);
-		return (NULL);
-	}
-	return (nruns);
+	return (largest);
 }
 
 /**
@@ -127,6 +67,48 @@ int	find_smallest(t_stack *stack)
 }
 
 /**
+ * Smart rotate
+ * 
+ * Calculate the distance between the location (index) with the target
+ * stacks's top index and btm index.
+ * If the distance to top is <= distance to btm, do Rx (RA or RB)
+ * If the distance to btm is < distance to top, do RRx (RRA or RRB)
+ * The idea is to move the location to the top of the stack.
+ * 
+ * Do how many times? 'Distance' times. For example, distance to top is 3,
+ * then do 3 times. Notice that when calculate the distance to btm, we need
+ * to add extra one. Because with only 'distance to btm', we only can move
+ * the location to the btm. So in order to sent it to the top, we need to
+ * do extra one RRx.
+**/
+static void	smart_rotate(t_stkgrp *stacks, int location, char stk)
+{
+	t_stack	*target;
+	int		dist_to_top;
+	int		dist_to_btm;
+	int		rrx;
+	int		rx;
+
+	target = stacks->a;
+	rrx = RRA;
+	rx = RA;
+	if (stk == 'B')
+	{
+		target = stacks->b;
+		rrx = RRB;
+		rx = RB;
+	}
+	dist_to_top = location;
+	dist_to_btm = target->btm - location + 1;
+	if (dist_to_top <= dist_to_btm)
+		while (--dist_to_top >= 0)
+			r_instr(stacks, rx, 1);
+	else if (dist_to_btm < dist_to_top)
+		while (--dist_to_btm >= 0)
+			r_instr(stacks, rrx, 1);
+}
+
+/**
  * Give way. The function name explains it all, to give way for the new item
  * 
  * dest_btm		: destination btm index
@@ -135,33 +117,30 @@ int	find_smallest(t_stack *stack)
  * 
  * 1. If location == 0 (new smallest), or location > dest_btm (new largest) do
  * 	  nothing, can push afterward and restorer will handle the rest
- * 2. If dist_to_top < dist_to_btm, do RA dist_to_top times
- * 3. If dist_to_btm < dist_to_top, do RRA dist_to_btm times
- * 4. When dist_to_top == dist_top_btm, no matter what direction, will be the
- *    same, so either one. For this function, I choose to do RA.
+ * 2. If the location is equal to the target's btm, meaning it's smaller than
+ * 	  the item at the bottom. Do RRx to move the 'seat' up for the new item.
+ * 2. Do smart rotate.
 **/
-void	give_way(t_stack *dest, int location)
+void	give_way(t_stkgrp *stacks, int location, char stk)
 {
-	int	dest_btm;
-	int	dist_to_top;
-	int	dist_to_btm;
+	t_stack	*target;
+	int		rrx;
 
-	dest_btm = dest->btm;
-	if (location > dest_btm || location == 0)
-		return ;
-	if (location == dest_btm)
+	target = stacks->a;
+	rrx = RRA;
+	if (stk == 'B')
 	{
-		rotate_stk(dest, RRA);
+		target = stacks->b;
+		rrx = RRB;
+	}	
+	if (location > target->btm || location == 0)
+		return ;
+	if (location == target->btm)
+	{
+		r_instr(stacks, rrx, 1);
 		return ;
 	}
-	dist_to_top = location;
-	dist_to_btm = dest_btm - location + 1;
-	if (dist_to_top <= dist_to_btm)
-		while (--dist_to_top >= 0)
-			rotate_stk(dest, RA);
-	if (dist_to_btm < dist_to_top)
-		while (--dist_to_btm >= 0)
-			rotate_stk(dest, RRA);
+	smart_rotate(stacks, location, stk);
 }
 
 /**
@@ -178,23 +157,16 @@ void	give_way(t_stack *dest, int location)
  * 4. When dist_to_top == dist_top_btm, no matter what direction, will be the
  *    same, so either one. For this function, I choose to do RA.
 **/
-void	restorer(t_stack *stack)
+void	restorer(t_stkgrp *stacks, char stk)
 {
-	int	smallest;
-	int	dest_btm;
-	int	dist_to_top;
-	int	dist_to_btm;
+	t_stack	*target;
+	int		smallest;
 
-	smallest = find_smallest(stack);
-	dest_btm = stack->btm;
+	target = stacks->a;
+	if (stk == 'B')
+		target = stacks->b;
+	smallest = find_smallest(target);
 	if (smallest == 0)
 		return ;
-	dist_to_top = smallest;
-	dist_to_btm = dest_btm - smallest + 1;
-	if (dist_to_top < dist_to_btm)
-		while (--dist_to_top >= 0)
-			rotate_stk(stack, RA);
-	if (dist_to_btm <= dist_to_top)
-		while (--dist_to_btm >= 0)
-			rotate_stk(stack, RRA);
+	smart_rotate(stacks, smallest, stk);
 }

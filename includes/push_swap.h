@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/24 12:11:06 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/26 12:12:22 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,19 @@ void	print_instr(int instr);
 void	sort_stack(t_stkgrp *stacks, int num_of_arg);
 void	sort_three(t_stkgrp *stacks, t_stack *main);
 void	sort_small_stack(t_stkgrp *stacks, int num_of_arg);
-void    sort_hundred(t_stkgrp *stacks, int num_of_arg);
+void    quick_sort(t_stkgrp *stacks, int num_of_arg, int chunk);
 int		check_if_sorted(t_stack *stack);
 
 // Sorter utils
 int		find_smallest(t_stack *stack);
 int		find_largest(t_stack *stack);
 void	give_way(t_stkgrp *stacks, int location, char stk);
-void	restorer(t_stack *stack);
+void	restorer(t_stkgrp *stacks, char stk);
+// int		*copy_items(int *items, int num_of_arg);
 
 // Sorting algo
 void	insertion_sort(t_stkgrp *stacks, char stk);
-void	bubble_sort(int *copy, int size);
+int		*bubble_sort(int *items, int size);
 
 // Stack checker (for testing purpose only)
 void	print_stack(t_stkgrp *stacks, int extra_info);
