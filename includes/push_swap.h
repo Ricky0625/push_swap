@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 16:19:49 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:27:27 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	print_instr(int instr);
 void	sort_stack(t_stkgrp *stacks, int num_of_arg);
 void	sort_three(t_stkgrp *stacks, t_stack *main);
 void	sort_small_stack(t_stkgrp *stacks, int num_of_arg);
-void    quick_sort(t_stkgrp *stacks, int num_of_arg, int cutsize);
+void	quick_sort(t_stkgrp *stacks, int num_of_arg, int cutsize);
 int		check_if_sorted(t_stack *stack);
 
 // Sorter utils
