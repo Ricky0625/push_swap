@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/26 17:37:34 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 15:32:27 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include "../libft/libft.h"
+# include "../get_next_line/get_next_line.h"
 
 // Macros
 # define INT_MIN -2147483648
