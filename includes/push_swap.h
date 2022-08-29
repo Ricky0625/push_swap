@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 17:27:27 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:50:57 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ int		init_stack(t_stack *stack, int num_of_arg);
 void	push_args(t_stack *stack, int *args);
 
 // Instruction
-void	s_instr(t_stkgrp *stacks, int instr);
-void	p_instr(t_stkgrp *stacks, int instr);
+void	s_instr(t_stkgrp *stacks, int instr, int print);
+void	p_instr(t_stkgrp *stacks, int instr, int print);
 void	r_instr(t_stkgrp *stacks, int instr, int print);
 void	ft_swap(int *a, int *b);
-void	swap_top(t_stack *stack, int instr);
-void	push_top(t_stack *org, t_stack *dest, int instr);
+void	swap_top(t_stack *stack);
+void	push_top(t_stack *org, t_stack *dest, int instr, int print);
 void	push_n_item(t_stkgrp *stacks, int instr, int n);
 void	rotate_stk(t_stack *stack, int instr, int print);
 void	print_instr(int instr);

@@ -6,12 +6,18 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 15:24:04 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 17:23:43 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 18:07:00 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
+/**
+ * Check if stack a is sorted or not.
+ * 
+ * If yes then output OK, exit with EXIT_SUCCESS
+ * If no then output KO, exit with EXIT_FAILURE
+**/
 void	check_and_exit(t_stack *stack)
 {
 	if (check_if_sorted(stack) == 1)
@@ -23,6 +29,10 @@ void	check_and_exit(t_stack *stack)
 	exit(EXIT_FAILURE);
 }
 
+/**
+ * Convert instr from str (STDIN) to int (Values that represents the instr).
+ * If the instr is not valid, return -1
+**/
 int	convert_instr(char *str)
 {
 	if (ft_strncmp(str, "sa\n", ft_strlen(str)) == 0)
@@ -51,18 +61,28 @@ int	convert_instr(char *str)
 		return (-1);
 }
 
+/**
+ * Redirect the program to the respective instr functions based on the
+ * given instruction.
+**/
 void	execute_instr(t_stkgrp *stacks, int instr)
 {
 	if (instr == SA || instr == SB || instr == SS)
-		s_instr(stacks, instr);
+		s_instr(stacks, instr, 0);
 	else if (instr == PA || instr == PB)
-		p_instr(stacks, instr);
+		p_instr(stacks, instr, 0);
 	else if (instr == RA || instr == RB || instr == RR
 		|| instr == RRA || instr == RRB || instr == RRR)
 		r_instr(stacks, instr, 0);
 	return ;
 }
 
+/**
+ * Read instructions from STDIN using get_next_line.
+ * It will keep reading until CTRL + D is pressed. When that
+ * happens, check if the stack is sorted or not.
+ * Otherwise, keep execute the instruction.
+**/
 void	read_and_execute(t_stkgrp *stacks)
 {
 	char	*str;
@@ -76,6 +96,7 @@ void	read_and_execute(t_stkgrp *stacks)
 		if (str == NULL)
 			check_and_exit(a);
 		instr = convert_instr(str);
+		free(str);
 		if (instr == -1)
 		{
 			ft_putstr_fd("ERROR\n", 2);
@@ -85,6 +106,15 @@ void	read_and_execute(t_stkgrp *stacks)
 	}
 }
 
+/**
+ * Driver function of Checker
+ * 
+ * 1. Check arguments
+ * 2. Initialize stacks
+ * 3. Push args onto stack a
+ * 4. Read from STDIN and execute instruction
+ * 5. Free everything at last
+**/
 int	main(int ac, char **av)
 {
 	int			*args;
@@ -98,11 +128,9 @@ int	main(int ac, char **av)
 	init_stack(&stack_a, num_of_args);
 	init_stack(&stack_b, num_of_args);
 	push_args(&stack_a, args);
+	free(args);
 	stacks.a = &stack_a;
 	stacks.b = &stack_b;
 	read_and_execute(&stacks);
-	free(args);
-	free(stack_a.items);
-	free(stack_b.items);
 	return (0);
 }
