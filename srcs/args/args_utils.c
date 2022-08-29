@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:07:45 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/26 18:44:30 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 12:06:19 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@
  * temp	 : to temporary store 'joined' before assign to new address
  * 
  * Iterate through the arguments, join the arguments with a space in between.
+ * 
+ * The joining process (while loop) will only be running if ac is greater or
+ * equal to 3. At start, av[1] will be assigned to joined. If there is more
+ * than 2 args (not including program name), while loop will run. In the
+ * first run, used will be 0. Then, proceed to join the string with space.
+ * After this, used will be set to 1, meaning joined has been used and next
+ * time before we use this, we have to free it.
+ * 
+ * Method to free 'joined':
+ * Assign 'joined' to temp, which means temp is pointing to 'joined'.
+ * Since strjoin will assign new address to joined, the old address will
+ * be pointed by the temp. Before next iteration, free `temp` to free the
+ * previous value of 'joined'.
 **/
 char	*join_args(int ac, char **av)
 {
