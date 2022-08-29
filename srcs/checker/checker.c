@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 15:24:04 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 18:07:00 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:07:34 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,14 @@
  * If yes then output OK, exit with EXIT_SUCCESS
  * If no then output KO, exit with EXIT_FAILURE
 **/
-void	check_and_exit(t_stack *stack)
+void	check_and_exit(t_stkgrp *stacks)
 {
-	if (check_if_sorted(stack) == 1)
+	t_stack	*a;
+	t_stack	*b;
+
+	a = stacks->a;
+	b = stacks->b;
+	if (check_if_sorted(a) == 1 && is_empty(b) == 1)
 	{
 		ft_putstr_fd("OK\n", 1);
 		exit(EXIT_SUCCESS);
@@ -87,14 +92,12 @@ void	read_and_execute(t_stkgrp *stacks)
 {
 	char	*str;
 	int		instr;
-	t_stack	*a;
 
-	a = stacks->a;
 	while (1)
 	{
 		str = get_next_line(0);
 		if (str == NULL)
-			check_and_exit(a);
+			check_and_exit(stacks);
 		instr = convert_instr(str);
 		free(str);
 		if (instr == -1)
