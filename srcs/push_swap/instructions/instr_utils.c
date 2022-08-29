@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 20:43:21 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 15:21:51 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:45:55 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 /**
  * Ermmm... Just to swap two value?
  **/
-void ft_swap(int *a, int *b)
+void	ft_swap(int *a, int *b)
 {
-	int temp;
+	int	temp;
 
 	temp = *a;
 	*a = *b;
@@ -32,13 +32,13 @@ void ft_swap(int *a, int *b)
  * 1. Check if it's empty or only one item (btm == 0)
  * 2. Swap top two item
  **/
-void swap_top(t_stack *stack, int instr)
+void	swap_top(t_stack *stack, int instr)
 {
-	int btm;
+	int	btm;
 
 	btm = stack->btm;
 	if (is_empty(stack) == 1 || btm == 0)
-		return;
+		return ;
 	ft_swap(&stack->items[0], &stack->items[1]);
 	print_instr(instr);
 }
@@ -60,13 +60,13 @@ void swap_top(t_stack *stack, int instr)
  * to be decremented as well. So, to solve that, after I push one item, I
  * have to shift all the items below index 0, to the front one space.
  **/
-void push_top(t_stack *org, t_stack *dest, int instr)
+void	push_top(t_stack *org, t_stack *dest, int instr)
 {
-	int i;
-	int item;
+	int	i;
+	int	item;
 
 	if (is_empty(org) == 1 || is_full(dest))
-		return;
+		return ;
 	item = peek(org);
 	pop(org);
 	push(dest, item);
@@ -90,10 +90,10 @@ void push_top(t_stack *org, t_stack *dest, int instr)
  * while the origin stack is not empty and the bottom index of stack
  * is not the new bottom index, keep pushing
  **/
-void push_n_item(t_stkgrp *stacks, int instr, int n)
+void	push_n_item(t_stkgrp *stacks, int instr, int n)
 {
-	t_stack *stack;
-	int new_btm;
+	t_stack	*stack;
+	int		new_btm;
 
 	stack = NULL;
 	if (instr == PA)
@@ -116,10 +116,10 @@ void push_n_item(t_stkgrp *stacks, int instr, int n)
  * Start from the first item of the array. swap it with the one below it.
  * Keep doing this until the last itme is at the bottom.
  **/
-void rotate_stk(t_stack *stack, int instr, int print)
+void	rotate_stk(t_stack *stack, int instr, int print)
 {
-	int start;
-	int iter;
+	int	start;
+	int	iter;
 
 	iter = stack->btm;
 	start = 0;

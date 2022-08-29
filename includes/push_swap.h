@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 15:32:27 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:19:49 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	pop(t_stack *stack);
 int		is_empty(t_stack *stack);
 int		is_full(t_stack *stack);
 int		peek(t_stack *stack);
+int		init_stack(t_stack *stack, int num_of_arg);
+void	push_args(t_stack *stack, int *args);
 
 // Instruction
 void	s_instr(t_stkgrp *stacks, int instr);

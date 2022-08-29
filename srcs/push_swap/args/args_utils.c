@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:07:45 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 15:21:51 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:44:08 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@
  * be pointed by the temp. Before next iteration, free `temp` to free the
  * previous value of 'joined'.
  **/
-char *join_args(int ac, char **av)
+char	*join_args(int ac, char **av)
 {
-	int index;
-	int used;
-	char *with_sp;
-	char *joined;
-	char *temp;
+	int		index;
+	int		used;
+	char	*with_sp;
+	char	*joined;
+	char	*temp;
 
 	index = 1;
 	used = 0;
@@ -64,10 +64,10 @@ char *join_args(int ac, char **av)
 /**
  * Get number of arguments (used after ft_split)
  **/
-int get_num_of_args(char **args)
+int	get_num_of_args(char **args)
 {
-	int i;
-	int num;
+	int	i;
+	int	num;
 
 	i = -1;
 	num = 0;
@@ -79,12 +79,48 @@ int get_num_of_args(char **args)
 /**
  * Free array of strings (used after ft_split)
  **/
-void free_tabs(char **args)
+void	free_tabs(char **args)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (args[++i] != NULL)
 		free(args[i]);
 	free(args);
+}
+
+/**
+ * Initialize the stack
+ *
+ * 1. Set capacity as the number of arguments
+ * 2. Set btm(index of bottom item) as -1, meaning nothing is in there
+ * 3. Calloc items with the number of arguments - 1 (exclude program name)
+ * 4. Check if malloc successful or not, if not return -1. Else return 1.
+ **/
+int	init_stack(t_stack *stack, int num_of_arg)
+{
+	stack->capacity = num_of_arg;
+	stack->btm = -1;
+	stack->items = ft_calloc(num_of_arg, sizeof(int));
+	if (stack->items == NULL)
+		return (-1);
+	return (1);
+}
+
+/**
+ * Push argument onto stack
+ *
+ * Push each value in the args onto the stack. index 0 is the top.
+ **/
+void	push_args(t_stack *stack, int *args)
+{
+	int	i;
+	int	arg;
+
+	i = -1;
+	while (++i < stack->capacity)
+	{
+		arg = args[i];
+		push(stack, arg);
+	}
 }

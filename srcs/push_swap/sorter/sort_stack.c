@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 20:05:17 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 15:21:51 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:48:21 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
  * Notice that we only compare until i less than stack->capacity - 1, meaning
  * until the max index. This is to avoid the function to overlook.
  **/
-int check_if_sorted(t_stack *stack)
+int	check_if_sorted(t_stack *stack)
 {
-	int i;
-	int *items;
+	int	i;
+	int	*items;
 
 	i = -1;
 	items = stack->items;
@@ -44,11 +44,11 @@ int check_if_sorted(t_stack *stack)
 /**
  * Sort stack that has only three item, by comparing top, mid and btm item
  **/
-void sort_three(t_stkgrp *stacks, t_stack *main)
+void	sort_three(t_stkgrp *stacks, t_stack *main)
 {
-	int top;
-	int mid;
-	int btm;
+	int	top;
+	int	mid;
+	int	btm;
 
 	top = main->items[0];
 	mid = main->items[1];
@@ -78,11 +78,11 @@ void sort_three(t_stkgrp *stacks, t_stack *main)
  * only left 3 items. Sort stack a using sort_three and use insertion
  * sort to sort stack b and push it back to stack a at the same time.
  **/
-void sort_small_stack(t_stkgrp *stacks, int num_of_arg)
+void	sort_small_stack(t_stkgrp *stacks, int num_of_arg)
 {
-	t_stack *a;
-	t_stack *b;
-	int n;
+	t_stack	*a;
+	t_stack	*b;
+	int		n;
 
 	a = stacks->a;
 	b = stacks->b;
@@ -101,10 +101,10 @@ void sort_small_stack(t_stkgrp *stacks, int num_of_arg)
  * 4. If not, and num_of_arg is between 4 and 5, sort_small_stack
  * 5. Else, sort using sort_big_stack
  **/
-void sort_stack(t_stkgrp *stacks, int num_of_arg)
+void	sort_stack(t_stkgrp *stacks, int num_of_arg)
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
 
 	a = stacks->a;
 	b = stacks->b;

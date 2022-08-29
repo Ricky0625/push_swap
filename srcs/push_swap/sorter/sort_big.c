@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:36:01 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 15:21:51 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:47:25 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@
  * 6. Update num_of_arg, and chunk size before calling itself.
  * 7. Call itself again.
  **/
-static void push_chunk(t_stkgrp *stacks, int num_of_arg, int chunk, int cutsize)
+static void	push_chunk(t_stkgrp *stacks, int num_of_arg, int chunk, int cutsize)
 {
-	t_stack *a;
-	t_stack *b;
-	int *copy;
-	int pivot;
+	t_stack	*a;
+	t_stack	*b;
+	int		*copy;
+	int		pivot;
 
 	a = stacks->a;
 	b = stacks->b;
 	if (a->btm + 1 <= 3 || check_if_sorted(a) == 1)
-		return;
+		return ;
 	copy = bubble_sort(a->items, num_of_arg);
 	pivot = num_of_arg / cutsize;
 	while (b->btm + 1 < chunk)
@@ -72,11 +72,11 @@ static void push_chunk(t_stkgrp *stacks, int num_of_arg, int chunk, int cutsize)
  *     ii.	Move largest item to the top using smart rotate
  *     iii.	Push the largest item to the stack a
  **/
-void quick_sort(t_stkgrp *stacks, int num_of_arg, int cutsize)
+void	quick_sort(t_stkgrp *stacks, int num_of_arg, int cutsize)
 {
-	t_stack *a;
-	t_stack *b;
-	int loc;
+	t_stack	*a;
+	t_stack	*b;
+	int		loc;
 
 	a = stacks->a;
 	b = stacks->b;

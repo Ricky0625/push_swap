@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:04:19 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 15:21:51 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:46:44 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@
  * Else, do binary_search from top to mid -1. (meaning target is smaller
  * than the item at midpoint)
  **/
-static int binary_search(t_stack *dest, int target, int top, int btm)
+static int	binary_search(t_stack *dest, int target, int top, int btm)
 {
-	int mid;
-	int *items;
+	int	mid;
+	int	*items;
 
 	items = dest->items;
 	if (btm <= top)
@@ -74,12 +74,12 @@ static int binary_search(t_stack *dest, int target, int top, int btm)
  *    push
  * 7. Run restorer. Let the smallest item to be at the top again.
  **/
-void insertion_sort(t_stkgrp *stacks, char dest_stk)
+void	insertion_sort(t_stkgrp *stacks, char dest_stk)
 {
-	t_stack *org;
-	t_stack *dest;
-	int top_org;
-	int loc;
+	t_stack	*org;
+	t_stack	*dest;
+	int		top_org;
+	int		loc;
 
 	org = stacks->a;
 	dest = stacks->b;
@@ -103,10 +103,10 @@ void insertion_sort(t_stkgrp *stacks, char dest_stk)
 /**
  * Create a copy of items
  **/
-static int *copy_items(int *items, int num_of_arg)
+static int	*copy_items(int *items, int num_of_arg)
 {
-	int i;
-	int *copy;
+	int	i;
+	int	*copy;
 
 	i = -1;
 	copy = malloc(sizeof(int) * num_of_arg);
@@ -118,11 +118,11 @@ static int *copy_items(int *items, int num_of_arg)
 /**
  * Create a copy and Bubble sort
  **/
-int *bubble_sort(int *items, int size)
+int	*bubble_sort(int *items, int size)
 {
-	int i;
-	int j;
-	int *copy;
+	int	i;
+	int	j;
+	int	*copy;
 
 	i = -1;
 	copy = copy_items(items, size);

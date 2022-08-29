@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:20:03 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 15:21:51 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 16:49:30 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
  *
  * Return smallest, which is the index of smallest item at the end.
  **/
-int find_largest(t_stack *stack)
+int	find_largest(t_stack *stack)
 {
-	int *items;
-	int index;
-	int largest;
+	int	*items;
+	int	index;
+	int	largest;
 
 	items = stack->items;
 	index = 1;
@@ -48,11 +48,11 @@ int find_largest(t_stack *stack)
  *
  * Return smallest, which is the index of smallest item at the end.
  **/
-int find_smallest(t_stack *stack)
+int	find_smallest(t_stack *stack)
 {
-	int *items;
-	int index;
-	int smallest;
+	int	*items;
+	int	index;
+	int	smallest;
 
 	items = stack->items;
 	index = 1;
@@ -81,13 +81,13 @@ int find_smallest(t_stack *stack)
  * the location to the btm. So in order to sent it to the top, we need to
  * do extra one RRx.
  **/
-static void smart_rotate(t_stkgrp *stacks, int location, char stk)
+static void	smart_rotate(t_stkgrp *stacks, int location, char stk)
 {
-	t_stack *target;
-	int dist_to_top;
-	int dist_to_btm;
-	int rrx;
-	int rx;
+	t_stack	*target;
+	int		dist_to_top;
+	int		dist_to_btm;
+	int		rrx;
+	int		rx;
 
 	target = stacks->a;
 	rrx = RRA;
@@ -121,10 +121,10 @@ static void smart_rotate(t_stkgrp *stacks, int location, char stk)
  * 	  the item at the bottom. Do RRx to move the 'seat' up for the new item.
  * 2. Do smart rotate.
  **/
-void give_way(t_stkgrp *stacks, int location, char stk)
+void	give_way(t_stkgrp *stacks, int location, char stk)
 {
-	t_stack *target;
-	int rrx;
+	t_stack	*target;
+	int		rrx;
 
 	target = stacks->a;
 	rrx = RRA;
@@ -134,11 +134,11 @@ void give_way(t_stkgrp *stacks, int location, char stk)
 		rrx = RRB;
 	}
 	if (location > target->btm || location == 0)
-		return;
+		return ;
 	if (location == target->btm)
 	{
 		r_instr(stacks, rrx, 1);
-		return;
+		return ;
 	}
 	smart_rotate(stacks, location, stk);
 }
@@ -157,16 +157,16 @@ void give_way(t_stkgrp *stacks, int location, char stk)
  * 4. When dist_to_top == dist_top_btm, no matter what direction, will be the
  *    same, so either one. For this function, I choose to do RA.
  **/
-void restorer(t_stkgrp *stacks, char stk)
+void	restorer(t_stkgrp *stacks, char stk)
 {
-	t_stack *target;
-	int smallest;
+	t_stack	*target;
+	int		smallest;
 
 	target = stacks->a;
 	if (stk == 'B')
 		target = stacks->b;
 	smallest = find_smallest(target);
 	if (smallest == 0)
-		return;
+		return ;
 	smart_rotate(stacks, smallest, stk);
 }
