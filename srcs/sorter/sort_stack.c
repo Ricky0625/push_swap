@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 20:05:17 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/26 18:47:07 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 12:28:35 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,10 @@ void	sort_three(t_stkgrp *stacks, t_stack *main)
 
 /**
  * Sort stack with 4 to 5 elements
+ * 
+ * First push n items from stack a to stack b so that stack a will
+ * only left 3 items. Sort stack a using sort_three and use insertion
+ * sort to sort stack b and push it back to stack a at the same time.
 **/
 void	sort_small_stack(t_stkgrp *stacks, int num_of_arg)
 {
@@ -110,7 +114,7 @@ void	sort_stack(t_stkgrp *stacks, int num_of_arg)
 		s_instr(stacks, SA);
 	else if (num_of_arg == 3)
 		sort_three(stacks, a);
-	else if (num_of_arg <= 10)
+	else if (num_of_arg <= 5)
 		sort_small_stack(stacks, num_of_arg);
 	else if (num_of_arg <= 100)
 		quick_sort(stacks, num_of_arg, 2);
