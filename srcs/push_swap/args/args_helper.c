@@ -6,11 +6,11 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 12:47:29 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 11:56:04 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 15:21:51 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../../includes/push_swap.h"
 
 /**
  * Check for duplicates
@@ -26,12 +26,12 @@
  * 2. The compared target will be i + 1, will be using strncmp to get the
  *    comparison between them. If cmp is 0 means they are identical.
  **/
-static void	check_duplicates(int num, char **tab)
+static void check_duplicates(int num, char **tab)
 {
-	int		i;
-	int		j;
-	int		cmp;
-	size_t	size;
+	int i;
+	int j;
+	int cmp;
+	size_t size;
 
 	i = 0;
 	while (i < num - 1)
@@ -69,11 +69,11 @@ static void	check_duplicates(int num, char **tab)
  * 	  because this might be a negative integer value
  * 3. For each character, check if it's a digit ('0' - '9')
  **/
-static void	check_is_int(int num, char **tab)
+static void check_is_int(int num, char **tab)
 {
-	int		i;
-	char	*str;
-	int		is_digit;
+	int i;
+	char *str;
+	int is_digit;
 
 	i = -1;
 	while (++i < num)
@@ -103,11 +103,11 @@ static void	check_is_int(int num, char **tab)
  * 4. Else, put the converted arg into array
  * 5. Return arg array at the end
  **/
-static int	*get_args(int num, char **tab)
+static int *get_args(int num, char **tab)
 {
-	int		*args;
-	long	out;
-	int		index;
+	int *args;
+	long out;
+	int index;
 
 	args = ft_calloc(num, sizeof(int));
 	index = -1;
@@ -142,11 +142,11 @@ static int	*get_args(int num, char **tab)
  * 7. Free the argument tabs.
  * 8. Return the arguemnts in the form of int *.
  **/
-int	*check_arguments(int ac, char **av, int *num)
+int *check_arguments(int ac, char **av, int *num)
 {
-	char	*joined_args;
-	char	**args_tab;
-	int		*args;
+	char *joined_args;
+	char **args_tab;
+	int *args;
 
 	if (ac == 1)
 	{

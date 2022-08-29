@@ -6,24 +6,30 @@
 #    By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/09 11:23:49 by wricky-t          #+#    #+#              #
-#    Updated: 2022/08/26 18:06:50 by wricky-t         ###   ########.fr        #
+#    Updated: 2022/08/29 15:22:57 by wricky-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= push_swap
 
-SRCS	:= srcs/push_swap.c \
-		   srcs/stack_operation.c \
-		   srcs/args/args_helper.c \
-		   srcs/args/args_utils.c \
-		   srcs/instructions/instr_helper.c \
-		   srcs/instructions/instr_utils.c \
-		   srcs/sorter/sort_stack.c \
-		   srcs/sorter/sort_utils.c \
-		   srcs/sorter/sort_algo.c \
-		   srcs/sorter/sort_big.c
+CHECKER	:= checker
+
+SRCS	:= srcs/push_swap/push_swap.c \
+		   srcs/push_swap/stack_operation.c \
+		   srcs/push_swap/args/args_helper.c \
+		   srcs/push_swap/args/args_utils.c \
+		   srcs/push_swap/instructions/instr_helper.c \
+		   srcs/push_swap/instructions/instr_utils.c \
+		   srcs/push_swap/sorter/sort_stack.c \
+		   srcs/push_swap/sorter/sort_utils.c \
+		   srcs/push_swap/sorter/sort_algo.c \
+		   srcs/push_swap/sorter/sort_big.c
+
+B_SRCS	:= srcs/checker/checker.c
 
 OBJS	:= $(SRCS:.c=.o)
+
+B_OBJS	:= $(B_SRCS:.c=.o)
 
 INCLUDE	:= includes/push_swap.h
 
@@ -51,6 +57,13 @@ $(NAME): $(OBJS) $(INCLUDE)
 	@echo ""
 	@$(CC) $(CFLAGS) $(OBJS) -o $@ -L$(LIB) $(LIB)/*.a
 
+bonus: $(CHECKER)
+	@echo "$(YL)CHECKER CREATED!$(DF)"
+
+$(CHECKER): $(B_OBJS) $(INCLUDE)
+	@echo "$(GR)↻ compiling...$(DF)"
+	@$(CC) $(CFLAGS) $(B_OBJS) -o $@
+
 libft:
 	@make all -C $(LIB)
 
@@ -59,10 +72,12 @@ libft:
 
 clean:
 	@$(RM) $(OBJS)
+	@$(RM) $(B_OBJS)
 	@make clean -C $(LIB)
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) $(CHECKER)
 	@make fclean -C $(LIB)
 
 re: fclean all

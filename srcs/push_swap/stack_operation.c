@@ -6,11 +6,11 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:48:39 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/24 10:43:48 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 15:22:09 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 /**
  * Push item onto stack

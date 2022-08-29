@@ -6,16 +6,16 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 15:53:40 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/24 10:40:53 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 15:21:51 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../../includes/push_swap.h"
 
 /**
  * Print instruction according to the instruction given
  **/
-void	print_instr(int instr)
+void print_instr(int instr)
 {
 	if (instr == SA)
 		ft_putstr_fd("sa\n", 1);
@@ -52,10 +52,10 @@ void	print_instr(int instr)
  *
  * After swap, print the instruction, even if the top two not swapped
  **/
-void	s_instr(t_stkgrp *stacks, int instr)
+void s_instr(t_stkgrp *stacks, int instr)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack *a;
+	t_stack *b;
 
 	a = stacks->a;
 	b = stacks->b;
@@ -81,10 +81,10 @@ void	s_instr(t_stkgrp *stacks, int instr)
  *
  * After push, print instruction no matter it's sucessful or not
  **/
-void	p_instr(t_stkgrp *stacks, int instr)
+void p_instr(t_stkgrp *stacks, int instr)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack *a;
+	t_stack *b;
 
 	a = stacks->a;
 	b = stacks->b;
@@ -98,7 +98,7 @@ void	p_instr(t_stkgrp *stacks, int instr)
  * Execute instruction RRx, Rx
  *
  * stack: the target stack
- * 
+ *
  * 1. If it's RR, call the r_instr with RA and RB but don't print instr.
  * 2. IF it's RRR, call the r_instr with RRA and RRB but don't print instr.
  * 3. Assign stack (If not RR nor RRR)
@@ -107,9 +107,9 @@ void	p_instr(t_stkgrp *stacks, int instr)
  * 4. If the stack is not NULL, meaning RA, RRA, RB or RRB, do rotate/reverse.
  * 5. If print is 1, meaning need to print the executed instr.
  **/
-void	r_instr(t_stkgrp *stacks, int instr, int print)
+void r_instr(t_stkgrp *stacks, int instr, int print)
 {
-	t_stack	*stack;
+	t_stack *stack;
 
 	stack = NULL;
 	if (instr == RR)
