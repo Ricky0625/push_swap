@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 15:53:40 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 16:44:44 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:49:42 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	print_instr(int instr)
  *
  * After swap, print the instruction, even if the top two not swapped
  **/
-void	s_instr(t_stkgrp *stacks, int instr)
+void	s_instr(t_stkgrp *stacks, int instr, int print)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -60,14 +60,16 @@ void	s_instr(t_stkgrp *stacks, int instr)
 	a = stacks->a;
 	b = stacks->b;
 	if (instr == SA)
-		swap_top(a, instr);
+		swap_top(a);
 	else if (instr == SB)
-		swap_top(b, instr);
+		swap_top(b);
 	else if (instr == SS)
 	{
-		swap_top(a, instr);
-		swap_top(b, instr);
+		swap_top(a);
+		swap_top(b);
 	}
+	if (print == 1)
+		print_instr(instr);
 }
 
 /**
@@ -81,7 +83,7 @@ void	s_instr(t_stkgrp *stacks, int instr)
  *
  * After push, print instruction no matter it's sucessful or not
  **/
-void	p_instr(t_stkgrp *stacks, int instr)
+void	p_instr(t_stkgrp *stacks, int instr, int print)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -89,9 +91,9 @@ void	p_instr(t_stkgrp *stacks, int instr)
 	a = stacks->a;
 	b = stacks->b;
 	if (instr == PA)
-		push_top(b, a, PA);
+		push_top(b, a, PA, print);
 	else if (instr == PB)
-		push_top(a, b, PB);
+		push_top(a, b, PB, print);
 }
 
 /**

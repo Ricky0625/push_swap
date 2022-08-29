@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:04:19 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 16:46:44 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:49:52 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ void	insertion_sort(t_stkgrp *stacks, char dest_stk)
 		top_org = peek(org);
 		loc = binary_search(dest, top_org, 0, dest->btm);
 		give_way(stacks, loc, dest_stk);
-		push_top(org, dest, PA);
+		push_top(org, dest, PA, 1);
 		while (peek(dest) > peek(org) && peek(org) > dest->items[dest->btm])
-			push_top(org, dest, PA);
+			push_top(org, dest, PA, 1);
 		restorer(stacks, dest_stk);
 	}
 }

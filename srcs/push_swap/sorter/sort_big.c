@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:36:01 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 16:47:25 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:51:44 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	push_chunk(t_stkgrp *stacks, int num_of_arg, int chunk, int cutsize)
 	{
 		if (peek(a) < copy[pivot])
 		{
-			p_instr(stacks, PB);
+			p_instr(stacks, PB, 1);
 			if (peek(b) < copy[pivot / 2])
 				r_instr(stacks, RB, 1);
 		}
@@ -87,6 +87,6 @@ void	quick_sort(t_stkgrp *stacks, int num_of_arg, int cutsize)
 	{
 		loc = find_largest(b);
 		give_way(stacks, loc, 'B');
-		p_instr(stacks, PA);
+		p_instr(stacks, PA, 1);
 	}
 }

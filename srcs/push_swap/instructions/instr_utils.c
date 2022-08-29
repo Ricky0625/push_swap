@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 20:43:21 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 16:45:55 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:51:20 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_swap(int *a, int *b)
  * 1. Check if it's empty or only one item (btm == 0)
  * 2. Swap top two item
  **/
-void	swap_top(t_stack *stack, int instr)
+void	swap_top(t_stack *stack)
 {
 	int	btm;
 
@@ -40,7 +40,6 @@ void	swap_top(t_stack *stack, int instr)
 	if (is_empty(stack) == 1 || btm == 0)
 		return ;
 	ft_swap(&stack->items[0], &stack->items[1]);
-	print_instr(instr);
 }
 
 /**
@@ -60,7 +59,7 @@ void	swap_top(t_stack *stack, int instr)
  * to be decremented as well. So, to solve that, after I push one item, I
  * have to shift all the items below index 0, to the front one space.
  **/
-void	push_top(t_stack *org, t_stack *dest, int instr)
+void	push_top(t_stack *org, t_stack *dest, int instr, int print)
 {
 	int	i;
 	int	item;
@@ -79,7 +78,8 @@ void	push_top(t_stack *org, t_stack *dest, int instr)
 			i--;
 		}
 	}
-	print_instr(instr);
+	if (print == 1)
+		print_instr(instr);
 }
 
 /**
@@ -102,7 +102,7 @@ void	push_n_item(t_stkgrp *stacks, int instr, int n)
 		stack = stacks->a;
 	new_btm = stack->btm - n;
 	while (is_empty(stack) != 1 && stack->btm != new_btm)
-		p_instr(stacks, instr);
+		p_instr(stacks, instr, 1);
 }
 
 /**

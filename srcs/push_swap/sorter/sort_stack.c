@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 20:05:17 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 16:48:21 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:42:58 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ void	sort_three(t_stkgrp *stacks, t_stack *main)
 	else if (top > btm && top < mid)
 		r_instr(stacks, RRA, 1);
 	else if (top > mid && top < btm)
-		s_instr(stacks, SA);
+		s_instr(stacks, SA, 1);
 	else if (top > mid && mid > btm)
 	{
-		s_instr(stacks, SA);
+		s_instr(stacks, SA, 1);
 		r_instr(stacks, RRA, 1);
 	}
 	else if (btm > top && mid > btm)
 	{
 		r_instr(stacks, RRA, 1);
-		s_instr(stacks, SA);
+		s_instr(stacks, SA, 1);
 	}
 }
 
@@ -111,7 +111,7 @@ void	sort_stack(t_stkgrp *stacks, int num_of_arg)
 	if (check_if_sorted(a) == 1)
 		exit(EXIT_SUCCESS);
 	if (num_of_arg == 2)
-		s_instr(stacks, SA);
+		s_instr(stacks, SA, 1);
 	else if (num_of_arg == 3)
 		sort_three(stacks, a);
 	else if (num_of_arg <= 5)
