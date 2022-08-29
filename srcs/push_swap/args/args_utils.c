@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:07:45 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 18:42:27 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:19:47 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ char	*join_args(int ac, char **av)
 	used = 0;
 	temp = NULL;
 	joined = av[1];
+	check_if_null(joined);
 	while (++index < ac)
 	{
 		if (used == 1)
 			temp = joined;
 		with_sp = ft_strjoin(joined, " ");
+		check_if_null(av[index]);
 		joined = ft_strjoin(with_sp, av[index]);
 		used = 1;
 		if (used == 1 && temp != NULL)

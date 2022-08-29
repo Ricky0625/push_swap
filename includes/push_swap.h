@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:43:02 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 17:50:57 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:19:01 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_stkgrp
 
 // Args helper & Utils
 int		*check_arguments(int ac, char **av, int *num);
+void	check_if_null(char *str);
 char	*join_args(int ac, char **av);
 int		get_num_of_args(char **args);
 void	free_tabs(char **args);
