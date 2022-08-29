@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 20:43:21 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/23 21:15:35 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 12:12:54 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	ft_swap(int *a, int *b)
 /**
  * Swap top two value
  *
- * top	: the index of top item
+ * btm	: the index of btm item
+ * 
  * 1. Check if it's empty or only one item (btm == 0)
  * 2. Swap top two item
  **/
@@ -46,10 +47,18 @@ void	swap_top(t_stack *stack, int instr)
  * Push top from origin stack to destination stack
  *
  * item : the item that being pushed
+ * 
  * 1. Check if origin is empty or destination is full
  * 2. Get the origin topmost item, store it in item
  * 3. Pop the origin topmost item
  * 4. Push the item to destination stack
+ * 
+ * Since i'm not using conventional way to construct my stacks, where the index
+ * of top item suppose to be the end of an array, my top item is actually the
+ * start of the array, which means index 0. So when we push the top item of
+ * the stack, index 0 will be empty and length still remain. The length suppose
+ * to be decremented as well. So, to solve that, after I push one item, I
+ * have to shift all the items below index 0, to the front one space.
  **/
 void	push_top(t_stack *org, t_stack *dest, int instr)
 {
