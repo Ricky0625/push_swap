@@ -6,7 +6,7 @@
 #    By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/09 11:23:49 by wricky-t          #+#    #+#              #
-#    Updated: 2022/08/29 15:22:57 by wricky-t         ###   ########.fr        #
+#    Updated: 2022/08/29 16:39:55 by wricky-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,11 @@ SRCS	:= srcs/push_swap/push_swap.c \
 		   srcs/push_swap/sorter/sort_algo.c \
 		   srcs/push_swap/sorter/sort_big.c
 
-B_SRCS	:= srcs/checker/checker.c
+B_SRCS	:= $(filter-out srcs/push_swap/push_swap.c,$(SRCS)) \
+		   srcs/checker/checker.c \
+		   srcs/checker/checker_utils.c \
+		   get_next_line/get_next_line.c \
+		   get_next_line/get_next_line_utils.c
 
 OBJS	:= $(SRCS:.c=.o)
 
@@ -40,6 +44,11 @@ CC		:= gcc
 CFLAGS	?= -Wall -Werror -Wextra #-g3 -fsanitize=address
 
 RM		:= rm -rf
+
+VAR		:= $(filter-out srcs/push_swap/push_swap.c,$(SRCS))
+
+test:
+	@echo "VAR is: $(B_OBJS)"
 
 all: $(NAME)
 	@echo "  $(GR)╋╋╋╋$(YL)┏━┳┓┏━┓$(DF)"
@@ -62,7 +71,7 @@ bonus: $(CHECKER)
 
 $(CHECKER): $(B_OBJS) $(INCLUDE)
 	@echo "$(GR)↻ compiling...$(DF)"
-	@$(CC) $(CFLAGS) $(B_OBJS) -o $@
+	@$(CC) $(CFLAGS) $(B_OBJS) -o $@ -L $(LIB) $(LIB)/*.a
 
 libft:
 	@make all -C $(LIB)
