@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:07:45 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 16:44:08 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 18:42:27 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ char	*join_args(int ac, char **av)
 
 	index = 1;
 	used = 0;
-	joined = av[1];
 	temp = NULL;
+	joined = av[1];
 	while (++index < ac)
 	{
 		if (used == 1)

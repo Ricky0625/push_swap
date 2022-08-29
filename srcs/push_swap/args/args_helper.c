@@ -6,11 +6,29 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 12:47:29 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 18:01:48 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:15:37 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/push_swap.h"
+
+static void	check_if_null(int ac, char **av)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	while (++i < ac)
+	{
+		str = av[i];
+		if (*str == '\0')
+		{
+			ft_putstr_fd("ERROR\n", 2);
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+}
 
 /**
  * Check for duplicates
@@ -153,6 +171,7 @@ int	*check_arguments(int ac, char **av, int *num)
 		ft_putstr_fd("ERROR\n", 2);
 		exit(EXIT_FAILURE);
 	}
+	check_if_null(ac, av);
 	joined_args = join_args(ac, av);
 	args_tab = ft_split(joined_args, ' ');
 	*num = get_num_of_args(args_tab);
