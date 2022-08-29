@@ -6,7 +6,7 @@
 #    By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/09 11:23:49 by wricky-t          #+#    #+#              #
-#    Updated: 2022/08/29 16:39:55 by wricky-t         ###   ########.fr        #
+#    Updated: 2022/08/29 17:02:50 by wricky-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,6 @@ CC		:= gcc
 CFLAGS	?= -Wall -Werror -Wextra #-g3 -fsanitize=address
 
 RM		:= rm -rf
-
-VAR		:= $(filter-out srcs/push_swap/push_swap.c,$(SRCS))
-
-test:
-	@echo "VAR is: $(B_OBJS)"
 
 all: $(NAME)
 	@echo "  $(GR)╋╋╋╋$(YL)┏━┳┓┏━┓$(DF)"

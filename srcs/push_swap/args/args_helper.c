@@ -6,9 +6,11 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 12:47:29 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 16:43:24 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:13:52 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../../includes/push_swap.h"
 
 #include "../../../includes/push_swap.h"
 
@@ -155,9 +157,9 @@ int	*check_arguments(int ac, char **av, int *num)
 	}
 	joined_args = join_args(ac, av);
 	args_tab = ft_split(joined_args, ' ');
+	*num = get_num_of_args(args_tab);
 	check_duplicates(*num, args_tab);
 	check_is_int(*num, args_tab);
-	*num = get_num_of_args(args_tab);
 	if (*num == 1)
 		exit(EXIT_SUCCESS);
 	args = get_args(*num, args_tab);
