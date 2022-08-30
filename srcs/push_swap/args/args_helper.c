@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 12:47:29 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/30 10:34:29 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/30 12:12:35 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,11 @@ int	*check_arguments(int ac, char **av, int *num)
 
 	if (ac == 1)
 		exit(EXIT_FAILURE);
+	if (ac == 2 && (ft_atol(av[1]) < INT_MIN || ft_atol(av[1]) > INT_MAX))
+	{
+		ft_putstr_fd("ERROR\n", 2);
+		exit(EXIT_FAILURE);
+	}
 	joined_args = join_args(ac, av);
 	args_tab = ft_split(joined_args, ' ');
 	*num = get_num_of_args(args_tab);

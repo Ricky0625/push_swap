@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 17:04:19 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/29 17:49:52 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/08/30 10:49:02 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static int	binary_search(t_stack *dest, int target, int top, int btm)
 /**
  * Insertion sort (the push_swap way)
  *
+ * Insertion Sort is a sorting algorithm that places the input element at its
+ * suitable place in each pass. 
  * Find the most suitable place in dest stack to place the top of origin stack
  *
  * 1. Iterate when the origin stack is not empty

@@ -6,7 +6,7 @@
 #    By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/09 11:23:49 by wricky-t          #+#    #+#              #
-#    Updated: 2022/08/29 17:26:29 by wricky-t         ###   ########.fr        #
+#    Updated: 2022/08/30 12:03:42 by wricky-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,7 @@ fclean: clean
 re: fclean all
 	@make re -C $(LIB)
 
-.PHONY: clean fclean re libft push_swap
+.PHONY: clean fclean re libft push_swap checker all
 
 # styling
 GR 	:= \033[1;92m
