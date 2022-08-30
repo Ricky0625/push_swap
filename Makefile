@@ -6,7 +6,7 @@
 #    By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/09 11:23:49 by wricky-t          #+#    #+#              #
-#    Updated: 2022/08/30 12:03:42 by wricky-t         ###   ########.fr        #
+#    Updated: 2022/08/30 12:30:30 by wricky-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ LIB		:= ./libft
 
 CC		:= gcc
 
-CFLAGS	?= -Wall -Werror -Wextra #-g3 -fsanitize=address
+CFLAGS	?= -Wall -Werror -Wextra
 
 RM		:= rm -rf
 
