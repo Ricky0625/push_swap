@@ -6,7 +6,7 @@
 /*   By: wricky-t <wricky-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 12:47:29 by wricky-t          #+#    #+#             */
-/*   Updated: 2022/08/30 12:51:06 by wricky-t         ###   ########.fr       */
+/*   Updated: 2022/09/01 15:09:29 by wricky-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	check_is_int(int num, char **tab)
 	while (++i < num)
 	{
 		str = tab[i];
-		if (str[0] == '-' || str[0] == '+')
+		if (str[0] == '-' && ft_isdigit(str[1]))
 			str++;
 		while (*str != '\0')
 		{
